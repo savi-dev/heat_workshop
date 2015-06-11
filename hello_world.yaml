@@ -1,0 +1,34 @@
+heat_template_version: 2014-10-16
+
+description: Create an empty VM
+
+parameters:
+  key_name:
+    type: string
+    default: key_spandan
+  flavor:
+    type: string
+    default: m1.small
+  image:
+    type: string
+    default: Ubuntu64.2.1
+
+resources:
+  Server:
+    type: OS::Nova::Server
+    properties:
+      flavor:
+        get_param: flavor
+      image:
+        get_param: image
+      key_name:
+        get_param: key_name
+      name: span_inst
+      user_data: |
+        #!/usr/bin/env bash
+        echo "hello world" > hello.txt
+
+outputs:
+  public_ip:
+    description: The public IP address of the newly configured Server.
+    value: { get_attr: [ Server, first_address ] }

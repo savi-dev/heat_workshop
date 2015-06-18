@@ -70,7 +70,7 @@ parameters:
 
   net_id:
     type: string
-    description: Network UUID to attach instance to
+    description: Network ID of network to attach instance to
     hidden: true
     constraints:
       - length: { min: 36, max: 36 }

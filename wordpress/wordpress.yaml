@@ -235,5 +235,5 @@ outputs:
           host: { get_attr: [WebServer, first_address] }
   DatabaseIP:
     description: IP Address of the Database 
-    value: { get_attr: [DBServer, first_address] }
+    value: { get_attr: [DatabaseServer, first_address] }
 
